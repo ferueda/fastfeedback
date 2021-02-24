@@ -1,14 +1,17 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react';
+import { ProvideAuth } from '../services/auth';
 
-import theme from '../theme'
-import { AppProps } from 'next/app'
+import theme from '../theme';
+import { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
-  )
+    <ProvideAuth>
+      <ChakraProvider resetCSS theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </ProvideAuth>
+  );
 }
 
-export default MyApp
+export default MyApp;
